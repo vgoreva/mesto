@@ -1,0 +1,6 @@
+.element__item {
+    display: grid;
+    grid-template-columns: calc(100% - 52px) 1fr;
+    background-color: #fff;
+    border-radius: 10px;
+}
