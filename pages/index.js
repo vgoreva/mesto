@@ -8,7 +8,7 @@ openButtonEditForm.addEventListener('click', function () {
 let closeEdit = document.querySelector('.popup__close');
 
 closeEdit.addEventListener('click', function () {
-    popupDisplayClass.classList.add('popup__hidden');
+    popupDisplayClass.classList.add('popup_hidden');
 })
 
 let userName = "Жак-Ив Кусто";
