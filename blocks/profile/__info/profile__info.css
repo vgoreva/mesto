@@ -3,8 +3,7 @@
     display: grid;
     grid-template-areas: 
     "name button"
-    "details ."
-    ;
+    "details .";
     justify-content: start;
     column-gap: 18px;
 }
