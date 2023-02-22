@@ -1,6 +1,8 @@
 .element__title {
     margin: 0;
     padding: 0;
+    display: block;
+    width: 200px;
     margin-left: 21px;
     grid-area: title;
     align-self: center;
@@ -10,4 +12,10 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+@media screen and (max-width:350px) {
+    .element__title{
+    width:190px  
+    }
 }
