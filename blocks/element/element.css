@@ -4,7 +4,7 @@
     width: 100%;
     height: 361px;
     display: grid;
-    grid-template-columns: calc(100% - 40px - 20px) 1fr;
+    grid-template-columns: 220px 1fr;
     grid-template-rows: 282px 1fr;
     grid-template-areas:
         "image image"
@@ -12,3 +12,15 @@
     background-color: #fff;
     border-radius: 10px;
 }
+
+@media screen and (max-width:768px) {
+.element {
+    grid-template-columns: 250px 1fr;
+    }
+}
+
+@media screen and (max-width:361px) {
+    .element {
+        grid-template-columns: 190px 1fr;
+        }
+    }
