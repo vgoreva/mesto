@@ -10,12 +10,13 @@
     background-repeat: no-repeat;
     border: 1px solid #fff;
     cursor: pointer;
-    margin-top: 39px;
+    align-self: end;
+    margin-bottom: 22px;
 }
 
 @media screen and (max-width: 1070px) {
     .profile__edit-button {
-        margin-top: 28px;
+        margin-top: 30px;
         width: 18px;
         height: 18px;
     }

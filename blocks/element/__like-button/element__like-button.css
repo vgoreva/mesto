@@ -13,6 +13,7 @@
     border: unset;
     cursor: pointer;
     justify-self: end;
+    align-self: center;
 }
 
 .element__like-button:hover {
