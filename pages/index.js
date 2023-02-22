@@ -1,33 +1,27 @@
-let openButtonEditForm = document.querySelector('.profile__button')
-let popupDisplayClass = document.querySelector('.popup_hidden');
-
-openButtonEditForm.addEventListener('click', function () {
-    popupDisplayClass.classList.remove('popup_hidden');
-})
-
-let closeEdit = document.querySelector('.popup__close');
-
-closeEdit.addEventListener('click', function () {
-    popupDisplayClass.classList.add('popup_hidden');
-})
-
-let userName = "Жак-Ив Кусто";
-let userDetails = "Исследователь океана"
+let openButtonEditForm = document.querySelector('.profile__edit-button')
+let popupDisplayClass = document.querySelector('.popup');
 let userNameElement = document.querySelector('.profile__name');
-let userDetailsElement = document.querySelector('.profile__details')
-let userNameEditForm = document.querySelector('.popup__name');
-let userDetailsEditForm = document.querySelector('.popup__details');
-
-userNameElement.textContent = userName;
-userDetailsElement.textContent = userDetails;
-userNameEditForm.value = userName;
-userDetailsEditForm.value = userDetails;
-
+let userDetailsElement = document.querySelector('.profile__details');
 let editForm = document.querySelector('.popup__form');
-let saveButtonEditForm = document.querySelector('.popup__saveButton');
+let userNameEditForm = document.querySelector('.popup__input_name');
+let userDetailsEditForm = document.querySelector('.popup__input_details');
+let saveButtonEditForm = document.querySelector('.popup__save-button');
+let closeButtonEditForm = document.querySelector('.popup__close-button');
 
-saveButtonEditForm.addEventListener('click', function () {
-    userNameElement.textContent = userNameEditForm.value;
-    userDetailsElement.textContent = userDetailsEditForm.value;
-    popupDisplayClass.classList.add('popup_hidden');
-})
+openButtonEditForm.onclick = function openEditForm() {
+    popupDisplayClass.classList.add('popup_opened');
+    userNameEditForm.value = userNameElement.textContent;
+    userDetailsEditForm.value = userDetailsElement.textContent;
+}
+
+closeButtonEditForm.onclick = function closeEditForm() {
+    popupDisplayClass.classList.remove('popup_opened');
+}
+
+function handleFormSubmit (evt) {
+    evt.preventDefault(); 
+    userNameEditForm.value = userNameElement.textContent;
+    userDetailsEditForm.value = userDetailsElement.textContent;
+}
+
+saveButtonEditForm.addEventListener('submit', handleFormSubmit); 

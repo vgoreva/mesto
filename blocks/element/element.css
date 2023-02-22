@@ -2,23 +2,11 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    list-style: none;
+    height: 361px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    row-gap: 20px;
-    column-gap: 17px;
-}
-
-@media screen and (max-width:1070px) {
-    .element {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (max-width:475px) {
-    .element {
-        display: flex;
-        flex-direction: column;
-
-    }
+    grid-template-areas:
+        "image image"
+        "title like";
+    background-color: #fff;
+    border-radius: 10px;
 }

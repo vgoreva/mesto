@@ -1,7 +1,11 @@
-.popup__close {
+.popup__close-button {
+    margin: 0;
+    padding: 0;
     background-image: url(../../../images/close.svg);
     background-color: transparent;
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
     background-repeat: no-repeat;
     border: unset;
     cursor: pointer;
@@ -14,15 +18,14 @@
 }
 
 @media screen and (max-width:425px) {
-    .popup__close {
+    .popup__close-button {
         width: 20px;
         height: 20px;
+        top:-36px;
         right: 0;
     }
 }
 
-@media screen and (max-width:320px) {
-    .popup__close {
-        right: 10px;
-    }
+.popup__close-button:hover {
+   opacity: 0.6;
 }

@@ -2,10 +2,13 @@
     grid-area: details;
     margin: 0;
     padding: 0;
-    width: fit-content;
+    max-width: 580px;
     font-weight: 400;
     font-size: 1.125em;
     line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 @media screen and (max-width: 1070px) {

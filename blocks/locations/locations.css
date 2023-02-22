@@ -1,5 +1,6 @@
 .location {
     margin: 0 200px 67px;
+    padding: 0;
 }
 
 @media screen and (max-width:1024px) {

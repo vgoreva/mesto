@@ -2,10 +2,12 @@
     grid-area: name;
     margin: 0;
     padding: 0;
+    padding-bottom: 16px;
+    max-width: 580px;
     font-weight: 500;
     font-size: 2.56em;
     line-height: 1.14;
-    align-self: center;
+    align-self: end;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

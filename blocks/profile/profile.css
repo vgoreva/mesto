@@ -1,9 +1,9 @@
 .profile {
-    margin: 0 200px 76px;
+    margin: 0 200px 47px;
     padding: 0;
     max-width: 100%;
     display: grid;
-    grid-template-columns: 170px 1fr 150px;
+    grid-template-columns: 147px 1fr 150px;
 }
 
 @media screen and (max-width: 1070px) {
@@ -15,6 +15,6 @@
 
 @media screen and (max-width: 768px) {
     .profile {
-        margin: 0 19px 20px;
+        margin: 0 19px 36px;
     }
 }
