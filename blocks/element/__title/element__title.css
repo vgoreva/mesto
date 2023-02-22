@@ -15,7 +15,7 @@
 }
 
 @media screen and (max-width:350px) {
-    .element__title{
-    width:190px  
+    .element__title {
+        width: 190px;
     }
 }
