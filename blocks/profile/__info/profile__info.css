@@ -12,11 +12,16 @@
 
 @media screen and (max-width: 1070px) {
     .profile__info{
-        grid-template-areas: 
+        margin: auto;
+        grid-template-areas:
         "name button"
         "details details";
-        justify-content: center;
         column-gap: 10px;
-        row-gap: 14px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .profile__info{
+    margin-left: 45px;
     }
 }

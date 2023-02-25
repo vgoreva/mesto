@@ -2,9 +2,8 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 361px;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 80px;
     grid-template-areas:
         "image image"
         "title like";

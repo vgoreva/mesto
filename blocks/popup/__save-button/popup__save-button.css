@@ -2,6 +2,7 @@
     margin: 0;
     padding: auto;
     margin-top: 48px;
+    margin-bottom: 37px;
     background-position: center;
     background-repeat: no-repeat;
     border: unset;
@@ -15,8 +16,15 @@
     border-radius: 2px;
 }
 
-@media screen and (max-width:425px) {
+@media screen and (max-width:620px) {
     .popup__save-button {
         margin-top: 45px;
+        margin-bottom: 25px;
+        font-size: 0.875em;
+        height: 46px;
     }
+}
+
+.popup__save-button:hover{
+    opacity: 0.8;
 }
