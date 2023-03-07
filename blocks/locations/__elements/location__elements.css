@@ -4,14 +4,14 @@
     width: 100%;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 282px);
     row-gap: 20px;
     column-gap: 17px;
 }
 
 @media screen and (max-width:1279px) {
     .location__elements {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 282px);
         justify-items: center;
     }
 }
