@@ -16,4 +16,4 @@
 
 **GitHub Pages**
 
-* [Сылка на GitHub Pages]()
+* [Сылка на GitHub Pages](https://vgoreva.github.io/mesto/)
