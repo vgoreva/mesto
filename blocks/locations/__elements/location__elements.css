@@ -12,7 +12,7 @@
 @media screen and (max-width:1279px) {
     .location__elements {
         grid-template-columns: repeat(2, 282px);
-        justify-items: space-evenly;
+        justify-content: space-evenly;
     }
 }
 
