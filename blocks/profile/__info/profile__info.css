@@ -12,16 +12,18 @@
 
 @media screen and (max-width: 1070px) {
     .profile__info{
-        margin: auto;
-        grid-template-areas:
-        "name button"
-        "details details";
-        column-gap: 10px;
+        grid-template-columns: 64px minmax(150px, 1fr) 68px;
+        grid-template-rows: auto auto;
+        grid-template-areas: 
+        ". name button"
+        ". details .";
+        gap:8px 10px;
+        align-items: center;
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
     .profile__info{
-    margin-left: 45px;
+        grid-template-columns: 34px 1fr 38px;
     }
 }

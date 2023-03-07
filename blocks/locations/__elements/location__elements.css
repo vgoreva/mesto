@@ -9,13 +9,14 @@
     column-gap: 17px;
 }
 
-@media screen and (max-width:1220px) {
+@media screen and (max-width:1279px) {
     .location__elements {
         grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
     }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:630px) {
     .location__elements {
         display: flex;
         flex-direction: column;

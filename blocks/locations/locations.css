@@ -3,7 +3,13 @@
     padding: 0;
 }
 
-@media screen and (max-width:1024px) {
+@media screen and (max-width:1070px) {
+    .location {
+        margin: 0 110px 0;
+    }
+}
+
+@media screen and (max-width:801px) {
     .location {
         margin: 0 19px 0;
     }

@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width:425px) {
-    .footer {
+    .footer__sign {
         font-size: 0.875em;
     }
 }

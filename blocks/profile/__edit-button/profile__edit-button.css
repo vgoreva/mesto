@@ -12,18 +12,18 @@
     border: 1px solid #fff;
     cursor: pointer;
     align-self: end;
-    margin-bottom: 22px;
+    margin-bottom: 38px;
 }
 
 @media screen and (max-width: 1070px) {
     .profile__edit-button {
-        margin-top: 30px;
         width: 18px;
         height: 18px;
         background-size: 7px;
+        margin-bottom: 5px;
     }
 }
 
 .profile__edit-button:hover {
-    opacity: 0.5;
+    opacity: 0.6;
 }

@@ -1,9 +1,8 @@
 .element__title {
-    margin: 0;
+    margin: 25px 21px 31px;
     padding: 0;
     display: block;
     width: 200px;
-    margin-left: 21px;
     grid-area: title;
     align-self: center;
     font-size: 24px;

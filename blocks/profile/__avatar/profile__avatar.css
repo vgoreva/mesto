@@ -1,5 +1,6 @@
 .profile__avatar {
-    width: 127px;
+    height: 120px;
+    width: 120px;
     margin: 0;
     padding: 0;
     grid-column: 1/2;
@@ -10,5 +11,6 @@
 @media screen and (max-width: 1070px) {
     .profile__avatar {
         align-self: center;
+        margin-bottom: 22px;
     }
 }
