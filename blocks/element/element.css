@@ -10,3 +10,9 @@
     background-color: #fff;
     border-radius: 10px;
 }
+
+@media screen and (max-width:630px) {
+    .element {
+        width: 282px;
+    }
+}
