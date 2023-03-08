@@ -3,7 +3,7 @@
     padding: 0;
     width: 100%;
     display: grid;
-    grid-template-rows: 1fr 80px;
+    grid-template-rows: 1fr fit-content;
     grid-template-areas:
         "image image"
         "title like";
