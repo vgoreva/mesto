@@ -12,7 +12,8 @@
 
 @media screen and (max-width: 1070px) {
     .profile__info{
-        grid-template-columns: 64px minmax(150px, 1fr) 68px;
+        margin: 0 auto;
+        grid-template-columns: 24px minmax(150px, min-content) 24px;
         grid-template-rows: auto auto;
         grid-template-areas: 
         ". name button"
@@ -24,6 +25,6 @@
 
 @media screen and (max-width: 425px) {
     .profile__info{
-        grid-template-columns: 34px 1fr 38px;
+        grid-template-columns: 18px 1fr 18px;
     }
 }
