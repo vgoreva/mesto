@@ -4,7 +4,7 @@
     max-width: 100%;
     display: grid;
     grid-template-columns: 120px 1fr 150px;
-    gap:25px;
+    gap:26.25px;
 }
 
 @media screen and (max-width: 1070px) {
