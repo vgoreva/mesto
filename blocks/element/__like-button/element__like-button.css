@@ -1,6 +1,6 @@
 .element__like-button {
     grid-area: like;
-    margin-right: 30px;
+    margin-right: 21px;
     padding: 0;
     background-image: url(../../../images/like_button.svg);
     width: 22px;
