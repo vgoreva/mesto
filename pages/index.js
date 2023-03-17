@@ -20,20 +20,20 @@ let cardNewTitle = document.querySelector('.popup__input_type_title');
 
 //переменые из карточек
 let cardArea = document.querySelector('.location__elements');
-let card = document.querySelectorAll('.element')
+let card = document.querySelectorAll('.element');
 
 const initialCards = [
   {
     name: 'Новая Аквитания',
-    link: '../images/bordeux.jpg'
+    link: './images/bordeux.jpg'
   },
   {
     name: 'Большой Барьерный риф',
-    link: '../images/riefs.jpg'
+    link: '/images/riefs.jpg'
   },
   {
     name: 'Амазония',
-    link: '../images/amazon.jpg'
+    link: '../../images/amazon.jpg'
   },
   {
     name: 'Мадагаскар',
@@ -56,14 +56,14 @@ function openEditForm() {
   popupEdit.classList.add('popup_opened');
   userNameEditForm.value = userNameElement.textContent;
   userDetailsEditForm.value = userDetailsElement.textContent;
-}
+};
 
 openButtonEditForm.addEventListener('click', openEditForm);
 
 //закрыть окно редактирования профиля
 function closePopup() {
   popupEdit.classList.remove('popup_opened');
-}
+};
 
 closeButtonEdit.addEventListener('click', closePopup);
 
@@ -73,21 +73,21 @@ function handleFormSubmit(event) {
   userNameElement.textContent = userNameEditForm.value;
   userDetailsElement.textContent = userDetailsEditForm.value;
   closePopup();
-}
+};
 
-editForm.addEventListener('submit', handleFormSubmit)
+editForm.addEventListener('submit', handleFormSubmit);
 
 //открыть окно добавления карточки
 function openAddForm() {
   popupAdd.classList.add('popup_opened');
-}
+};
 
 addButton.addEventListener('click', openAddForm);
 
 //закрыть окно добавления карточки
 function closeAddForm() {
   popupAdd.classList.remove('popup_opened');
-}
+};
 
 closeButtonAdd.addEventListener('click', closeAddForm);
 
@@ -101,8 +101,8 @@ function renderCard() {
       <h2 class="element__title">${initialCards[i].name}</h2>
       <button class="element__like-button" type="button" aria-label="like"></button>
   </li>`
-  }
-}
+  };
+};
 
 renderCard();
 
@@ -112,14 +112,18 @@ function createCard(event) {
   let data = {
     name: cardNewTitle.value,
     link: cardNewImage.value,
-  }
+  };
   initialCards.unshift(data);
   cardArea.innerHTML = '';
   renderCard();
+  likeCard();
+  removeCard();
+  closeImage();
   closeAddForm();
+
   cardNewImage.value = '';
   cardNewTitle.value = '';
-}
+};
 
 addForm.addEventListener('submit', createCard);
 
@@ -131,9 +135,10 @@ function likeCard() {
       let thisLikeButton = likeButton[i];
       thisLikeButton.classList.toggle('element__like_button_active');
     });
-  }
-}
-likeCard()
+  ;}
+};
+
+likeCard();
 
 //Удалить карточку
 function removeCard() {
@@ -141,46 +146,46 @@ function removeCard() {
   for (let i = 0; i < trashButton.length; i++) {
     trashButton[i].addEventListener("click", function () {
       let thisTrashButton = trashButton[i];
-      thisTrashButton.parentElement.remove()
+      thisTrashButton.parentElement.remove();
     });
   }
 }
-removeCard()
+
+removeCard();
 
 //Открыть попап с картинкой
-let cardImage = document.querySelectorAll('.element__image')
-let popupImage = document.querySelector('.popup_type_view')
-let popupContainerImage = document.querySelector('.popup__container_image')
+let cardImage = document.querySelectorAll('.element__image');
+let popupImage = document.querySelector('.popup_type_view');
+let popupContainerImage = document.querySelector('.popup__container_image');
+
 function openImage() {
   for (let i = 0; i < cardImage.length; i++) {
     cardImage[i].addEventListener("click", function () {
       let thisCardImage = cardImage[i];
-      thisCardImage.addEventListener('click', openImage)
+      thisCardImage.addEventListener('click', openImage);
       popupImage.classList.add('popup_opened');
-      popupContainerImage.insertAdjacentHTML ("beforeEnd",
-      `<img class="popup__image" alt=${initialCards[i].name} src=${initialCards[i].link}>
+      popupContainerImage.insertAdjacentHTML("beforeEnd",
+        `<img class="popup__image" alt=${initialCards[i].name} src=${initialCards[i].link}>
       <h2 class="popup__title popup__title_full">${initialCards[i].name}</h2>`
-    );
-  })
-}
-}
+      );
+    });
+  };
+};
 
 openImage();
 
-let closeButtonImage = document.querySelector('.popup__close-button_type_image');
-console.log(closeButtonImage);
-
 //Закрыть попап с картинкой
-function closeImage() {
- let closeButtonImage = document.querySelector('.popup__close-button_type_image');
- closeButtonImage.addEventListener('click', function(){
-  let popupImageFull = document.querySelector('.popup__image');
-  let popupTitleFull = document.querySelector('.popup__title_full');
-  popupImageFull.remove();
-  popupTitleFull.remove();
- popupImage.classList.remove('popup_opened');
-});
-}
-closeImage()
+let closeButtonImage = document.querySelector('.popup__close-button_type_image');
 
-//Плавное
+function closeImage() {
+  let closeButtonImage = document.querySelector('.popup__close-button_type_image');
+  closeButtonImage.addEventListener('click', function () {
+    let popupImageFull = document.querySelector('.popup__image');
+    let popupTitleFull = document.querySelector('.popup__title_full');
+    popupImageFull.remove();
+    popupTitleFull.remove();
+    popupImage.classList.remove('popup_opened');
+  });
+};
+
+closeImage();
