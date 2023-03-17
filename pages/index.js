@@ -101,7 +101,6 @@ function renderCard() {
       <h2 class="element__title">${initialCards[i].name}</h2>
       <button class="element__like-button" type="button" aria-label="like"></button>
   </li>`
-  
   }
 }
 
@@ -126,21 +125,21 @@ addForm.addEventListener('submit', createCard);
 
 //Поставить лайк
 function likeCard() {
-    let likeButton = document.querySelectorAll('.element__like-button');
-    for (let i = 0; i < likeButton.length; i++) {
-    likeButton[i].addEventListener("click", function() {
-    let thisLikeButton = likeButton[i];
-    thisLikeButton.classList.toggle('element__like_button_active');
+  let likeButton = document.querySelectorAll('.element__like-button');
+  for (let i = 0; i < likeButton.length; i++) {
+    likeButton[i].addEventListener("click", function () {
+      let thisLikeButton = likeButton[i];
+      thisLikeButton.classList.toggle('element__like_button_active');
     });
   }
 }
 likeCard()
 
 //Удалить карточку
-function removeCard () {
-    let trashButton = document.querySelectorAll('.element__trash-button');
-    for (let i = 0; i < trashButton.length; i++) {
-    trashButton[i].addEventListener("click",function(){
+function removeCard() {
+  let trashButton = document.querySelectorAll('.element__trash-button');
+  for (let i = 0; i < trashButton.length; i++) {
+    trashButton[i].addEventListener("click", function () {
       let thisTrashButton = trashButton[i];
       thisTrashButton.parentElement.remove()
     });
@@ -149,14 +148,39 @@ function removeCard () {
 removeCard()
 
 //Открыть попап с картинкой
-let cardImage = document.querySelector('.element__image')
+let cardImage = document.querySelectorAll('.element__image')
 let popupImage = document.querySelector('.popup_type_view')
-function openImage (){
-//for (let i = 0; i < cardImage.length; i++){
-  //cardImage[i].addEventListener("click",function(){
-  //let thisCardImage = cardImage[i];
-  popupImage.classList.add('popup_opened');
-}//);
-//}
-//}
-cardImage.addEventListener('click',openImage)
+let popupContainerImage = document.querySelector('.popup__container_image')
+function openImage() {
+  for (let i = 0; i < cardImage.length; i++) {
+    cardImage[i].addEventListener("click", function () {
+      let thisCardImage = cardImage[i];
+      thisCardImage.addEventListener('click', openImage)
+      popupImage.classList.add('popup_opened');
+      popupContainerImage.insertAdjacentHTML ("beforeEnd",
+      `<img class="popup__image" alt=${initialCards[i].name} src=${initialCards[i].link}>
+      <h2 class="popup__title popup__title_full">${initialCards[i].name}</h2>`
+    );
+  })
+}
+}
+
+openImage();
+
+let closeButtonImage = document.querySelector('.popup__close-button_type_image');
+console.log(closeButtonImage);
+
+//Закрыть попап с картинкой
+function closeImage() {
+ let closeButtonImage = document.querySelector('.popup__close-button_type_image');
+ closeButtonImage.addEventListener('click', function(){
+  let popupImageFull = document.querySelector('.popup__image');
+  let popupTitleFull = document.querySelector('.popup__title_full');
+  popupImageFull.remove();
+  popupTitleFull.remove();
+ popupImage.classList.remove('popup_opened');
+});
+}
+closeImage()
+
+//Плавное

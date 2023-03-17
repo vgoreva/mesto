@@ -24,7 +24,7 @@
         </section>
         <section class="location">
             <ul class="location__elements">
-              <!--  <template id="card">
+                <!--  <template id="card">
                 <li class="element">
                     <img class="element__image" alt="Виноградник">
                     <h2 class="element__title"></h2>
@@ -79,15 +79,20 @@
             <button class="popup__close-button popup__close-button_type_add" type="button" aria-label="close"></button>
             <h2 class="popup__title">Новое место</h2>
             <form class="popup__form popup__form_type_add" name="popup__form ">
-                <input class="popup__input popup__input_type_title" type="text" name="popup__title" placeholder="Название">
-                <input class="popup__input popup__input_type_link" type="text" name="popup__link" placeholder="Сылка на картинку">
+                <input class="popup__input popup__input_type_title" type="text" name="popup__title"
+                    placeholder="Название">
+                <input class="popup__input popup__input_type_link" type="text" name="popup__link"
+                    placeholder="Сылка на картинку">
                 <input class="popup__save-button" type="submit" value="Cохранить">
             </form>
         </div>
     </div>
     <div class="popup popup_type_view">
-    <button class="popup__close-button popup__close-button_type_view" type="button" aria-label="close"></button>
+        <div class="popup__container popup__container_image">
+            <button class="popup__close-button popup__close-button_type_image" type="button" aria-label="close"></button>
+        </div>
     </div>
     <script src="./pages/index.js" defer></script>
 </body>
+
 </html>
