@@ -9,6 +9,8 @@
         "title like";
     background-color: #fff;
     border-radius: 10px;
+    align-content: space-between;
+    position: relative;
 }
 
 @media screen and (max-width:630px) {

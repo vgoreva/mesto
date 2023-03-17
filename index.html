@@ -24,12 +24,14 @@
         </section>
         <section class="location">
             <ul class="location__elements">
+              <!--  <template id="card">
                 <li class="element">
-                    <img class="element__image" src="./images/bordeux.jpg" alt="Виноградник">
-                    <h2 class="element__title">Новая Аквитания</h2>
+                    <img class="element__image" alt="Виноградник">
+                    <h2 class="element__title"></h2>
                     <button class="element__like-button" type="button" aria-label="like"></button>
                 </li>
-                <li class="element">
+            </template>
+               <li class="element">
                     <img class="element__image" src="./images/riefs.jpg" alt="Риф вид сверху">
                     <h2 class="element__title">Большой Барьерный риф</h2>
                     <button class="element__like-button" type="button" aria-label="like"></button>
@@ -53,7 +55,7 @@
                     <img class="element__image" src="./images/antarctica.jpg" alt="Пингвины купаются">
                     <h2 class="element__title">Антарктида</h2>
                     <button class="element__like-button" type="button" aria-label="like"></button>
-                </li>
+                </li> -->
             </ul>
         </section>
 
@@ -61,16 +63,30 @@
     <footer class="footer">
         <p class="footer__sign">&#169; 2023 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup_type_edit">
         <div class="popup__container">
-            <button class="popup__close-button" type="button" aria-label="close"></button>
+            <button class="popup__close-button popup__close-button_type_edit" type="button" aria-label="close"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form" name="popup__form">
+            <form class="popup__form  popup__form_type_edit" name="popup__form">
                 <input class="popup__input popup__input_type_name" type="text" name="popup__name">
                 <input class="popup__input popup__input_type_details" type="text" name="popup__details">
                 <input class="popup__save-button" type="submit" value="Cохранить">
             </form>
         </div>
+    </div>
+    <div class="popup popup_type_add">
+        <div class="popup__container">
+            <button class="popup__close-button popup__close-button_type_add" type="button" aria-label="close"></button>
+            <h2 class="popup__title">Новое место</h2>
+            <form class="popup__form popup__form_type_add" name="popup__form ">
+                <input class="popup__input popup__input_type_title" type="text" name="popup__title" placeholder="Название">
+                <input class="popup__input popup__input_type_link" type="text" name="popup__link" placeholder="Сылка на картинку">
+                <input class="popup__save-button" type="submit" value="Cохранить">
+            </form>
+        </div>
+    </div>
+    <div class="popup popup_type_view">
+    <button class="popup__close-button popup__close-button_type_view" type="button" aria-label="close"></button>
     </div>
     <script src="./pages/index.js" defer></script>
 </body>
