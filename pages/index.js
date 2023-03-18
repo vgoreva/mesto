@@ -27,23 +27,23 @@ const initialCards = [
   },
   {
     name: 'Большой Барьерный риф',
-    link: '/images/riefs.jpg'
+    link: './images/riefs.jpg'
   },
   {
     name: 'Амазония',
-    link: '../../images/amazon.jpg'
+    link: './images/amazon.jpg'
   },
   {
     name: 'Мадагаскар',
-    link: '../images/madagacsar.jpg'
+    link: './images/madagacsar.jpg'
   },
   {
     name: 'Новая Зеландия',
-    link: '../images/new_zealand.jpg'
+    link: './images/new_zealand.jpg'
   },
   {
     name: 'Антарктида',
-    link: '../images/antarctica.jpg'
+    link: './images/antarctica.jpg'
   }
 ];
 
