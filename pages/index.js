@@ -20,8 +20,6 @@ let cardNewTitle = document.querySelector('.popup__input_type_title');
 
 //переменые из карточек
 let cardArea = document.querySelector('.location__elements');
-let card = document.querySelectorAll('.element');
-
 const initialCards = [
   {
     name: 'Новая Аквитания',
@@ -94,13 +92,20 @@ closeButtonAdd.addEventListener('click', closeAddForm);
 // Добавить 6 карточек в начале
 function renderCard() {
   for (let i = 0; i < initialCards.length; i++) {
-    cardArea.innerHTML += `
+    let cardClone = document.querySelector('#card').content;
+    const cardElement = cardClone.querySelector('.element').cloneNode(true);
+    cardElement.querySelector('.element__image').src = initialCards[i].link;
+    cardElement.querySelector('.element__title').textContent = initialCards[i].name;
+    cardArea.append(cardElement);
+
+  /*   cardArea.innerHTML += `
   <li class="element">
       <img class="element__image" alt=${initialCards[i].name} src=${initialCards[i].link}>
       <button class="element__trash-button" type="button" aria-label="trash"></button>
       <h2 class="element__title">${initialCards[i].name}</h2>
       <button class="element__like-button" type="button" aria-label="like"></button>
-  </li>`
+  </li>` */
+
   };
 };
 
@@ -114,12 +119,18 @@ function createCard(event) {
     link: cardNewImage.value,
   };
   initialCards.unshift(data);
-  cardArea.innerHTML = '';
-  renderCard();
+
+  let cardClone = document.querySelector('#card').content;
+  const cardElement = cardClone.querySelector('.element').cloneNode(true);
+  cardElement.querySelector('.element__image').src = data.link;
+  cardElement.querySelector('.element__title').textContent = data.name;
+  cardArea.prepend(cardElement);
+
   likeCard();
   removeCard();
   closeImage();
-  closeAddForm();
+  openImage()
+  closeAddForm(); 
 
   cardNewImage.value = '';
   cardNewTitle.value = '';
@@ -154,20 +165,33 @@ function removeCard() {
 removeCard();
 
 //Открыть попап с картинкой
-let cardImage = document.querySelectorAll('.element__image');
+
 let popupImage = document.querySelector('.popup_type_view');
 let popupContainerImage = document.querySelector('.popup__container_image');
 
 function openImage() {
+
+let cardImage = document.querySelectorAll('.element__image');
+console.log(cardImage);
+
   for (let i = 0; i < cardImage.length; i++) {
     cardImage[i].addEventListener("click", function () {
       let thisCardImage = cardImage[i];
+
       thisCardImage.addEventListener('click', openImage);
+
       popupImage.classList.add('popup_opened');
-      popupContainerImage.insertAdjacentHTML("beforeEnd",
+
+      let imageContent = document.querySelector('#image_content').content;
+      const cloneImageContent = imageContent.querySelector('.popup__template').cloneNode(true);
+      cloneImageContent.querySelector('.popup__image').src = initialCards[i].link;
+      cloneImageContent.querySelector('.popup__title').textContent = initialCards[i].name;
+      popupContainerImage.prepend(cloneImageContent);
+
+     /* popupContainerImage.insertAdjacentHTML("beforeEnd",
         `<img class="popup__image" alt=${initialCards[i].name} src=${initialCards[i].link}>
       <h2 class="popup__title popup__title_full">${initialCards[i].name}</h2>`
-      );
+      ); */
     });
   };
 };
