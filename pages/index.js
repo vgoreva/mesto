@@ -5,7 +5,7 @@ const userNameElement = document.querySelector('.profile__name');
 const userDetailsElement = document.querySelector('.profile__details');
 
 //все попапы
-const anyPopup = document.querySelectorAll('.popup');
+const anyPopups = document.querySelectorAll('.popup');
 const closeButtons = document.querySelectorAll('.popup__close-button')
 
 //переменные из всплывающего окна редактирования профиля
@@ -23,7 +23,7 @@ const cardNewTitle = document.querySelector('.popup__input_type_title');
 //переменные из попапа с картинкой
 const popupImage = document.querySelector('.popup_type_view');
 const popupContainerImage = document.querySelector('.popup__container_image');
-let imageFull = document.querySelector('.popup__image')
+const imageFull = document.querySelector('.popup__image')
 const titleFull = document.querySelector('.popup__title_full')
 
 //переменые из карточек
@@ -109,24 +109,19 @@ function createCard(card) {
   cardImage.setAttribute('alt', card.name);
 
   //лайки
-  const likeButtons = newCard.querySelectorAll('.element__like-button');
+  const likeButton = newCard.querySelector('.element__like-button');
 
-  for (let i = 0; i < likeButtons.length; i++) {
-    likeButtons[i].addEventListener("click", function () {
-      let thisLikeButton = likeButtons[i];
-      thisLikeButton.classList.toggle('element__like_button_active');
-    });
-  }
+  likeButton.addEventListener("click", function () {
+    likeButton.classList.toggle('element__like_button_active');
+  });
 
   //удаление
-  const trashButtons = newCard.querySelectorAll('.element__trash-button');
+  const trashButton = newCard.querySelector('.element__trash-button');
 
-  for (let i = 0; i < trashButtons.length; i++) {
-    trashButtons[i].addEventListener("click", function () {
-      let thisTrashButton = trashButtons[i];
-      thisTrashButton.closest("li").remove();
-    });
-  }
+  trashButton.addEventListener("click", function () {
+    trashButton.closest("li").remove();
+  });
+
   //Открыть попап с картинкой
   cardImage.addEventListener("click", function () {
     openPopup(popupImage);
