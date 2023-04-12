@@ -5,4 +5,5 @@
     position: relative;
     display: flex;
     width: fit-content;
+    max-width: none;
 }

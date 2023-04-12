@@ -7,6 +7,7 @@ const userDetailsElement = document.querySelector('.profile__details');
 //все попапы
 const anyPopups = document.querySelectorAll('.popup');
 const closeButtons = document.querySelectorAll('.popup__close-button')
+const anyInputs = document.querySelectorAll('.popup__input')
 
 //переменные из всплывающего окна редактирования профиля
 const popupEdit = document.querySelector('.popup_type_edit');
@@ -16,15 +17,18 @@ const userDetailsEditForm = document.querySelector('.popup__input_type_details')
 
 //переменные из всплвающенго окна добавления фото
 const popupAdd = document.querySelector('.popup_type_add');
-const addForm = document.querySelector('.popup__form_type_add')
+const addForm = document.querySelector('.popup__form_type_add');
 const cardNewImage = document.querySelector('.popup__input_type_link');
 const cardNewTitle = document.querySelector('.popup__input_type_title');
+const saveButtonPopupAdd = document.querySelector('.popup__save-button_type_add')
+const errorMessageContainers = document.querySelectorAll('.popup__error')
 
 //переменные из попапа с картинкой
 const popupImage = document.querySelector('.popup_type_view');
 const popupContainerImage = document.querySelector('.popup__container_image');
 const imageFull = document.querySelector('.popup__image')
 const titleFull = document.querySelector('.popup__title_full')
+const closeButtonImage = document.querySelector('.popup__close-button_type_image');
 
 //переменые из карточек
 const cardArea = document.querySelector('.location__elements');
@@ -71,28 +75,44 @@ closeButtons.forEach((button) => {
 });
 
 
-//открыть окно редактирование профиля с данными
+//Открыть окно редактирование профиля с данными
 function openEditPopup() {
   openPopup(popupEdit);
+
   userNameEditForm.value = userNameElement.textContent;
   userDetailsEditForm.value = userDetailsElement.textContent;
 };
 
 openButtonEditForm.addEventListener('click', openEditPopup);
 
-// изменить данные в профиле и сохранить изменения
+// Изменить данные в профиле и сохранить изменения
 function handleFormSubmit(event) {
   event.preventDefault();
+
   userNameElement.textContent = userNameEditForm.value;
   userDetailsElement.textContent = userDetailsEditForm.value;
+
   closePopup(popupEdit);
 };
 
 editForm.addEventListener('submit', handleFormSubmit);
 
-//открыть окно добавления карточки
+//Очистить форму
+function resetInput(form) {
+  form.reset();
+}
+
+//Открыть окно добавления карточки
 function openAddForm() {
+  disableButton (saveButtonPopupAdd, {inactiveButtonClass:validationConfig.inactiveButtonClass});                    // Отключить кнопку при вызове окна
+
+  errorMessageContainers.forEach(deleteErrorMessages);
+
+  undecorateInputs(cardNewImage,  {inputErrorClass:validationConfig.inputErrorClass}) 
+  undecorateInputs(cardNewTitle,  {inputErrorClass:validationConfig.inputErrorClass}) 
+
   openPopup(popupAdd);
+  resetInput(addForm);
 };
 
 addButton.addEventListener('click', openAddForm);
@@ -108,14 +128,14 @@ function createCard(card) {
   cardImage.setAttribute('src', card.link);
   cardImage.setAttribute('alt', card.name);
 
-  //лайки
+  //Лайкнуть
   const likeButton = newCard.querySelector('.element__like-button');
 
   likeButton.addEventListener("click", function () {
     likeButton.classList.toggle('element__like_button_active');
   });
 
-  //удаление
+  //Удалить
   const trashButton = newCard.querySelector('.element__trash-button');
 
   trashButton.addEventListener("click", function () {
@@ -152,10 +172,6 @@ function addAddedCards(card) {
   cardArea.prepend(card);
 }
 
-//очистить инпуты
-function resetInput() {
-  addForm.reset();
-}
 
 //Отразить новую карточку на страницу
 function renderAddedCard(event) {
@@ -168,10 +184,31 @@ function renderAddedCard(event) {
 
   addAddedCards(newCard);
   closePopup(popupAdd);
-  resetInput();
 }
 
 addForm.addEventListener('submit', renderAddedCard);
 
-//Закрыть попап с картинкой
-const closeButtonImage = document.querySelector('.popup__close-button_type_image');
+
+//Закрыть попап кликом на оверлэй
+function closeClickingOverlay(popup) {
+    popup.addEventListener('click', function(evt){
+      if (evt.target === evt.currentTarget){
+        closePopup(popup)
+      }
+    })
+  }
+
+//Закрыть попап с картинкой кликом на оверлэй
+closeClickingOverlay(popupImage)
+
+//Валидация
+let validationConfig = {
+  formSelector: '.popup__form',                                 //Селектор формы
+  inputSelector: '.popup__input',                              //Селектор полей ввода
+  submitButtonSelector: '.popup__save-button',                //Селектор кнопки
+  inactiveButtonClass: 'popup__save-button_disabled',        //Класс неактивной кнопки
+  inputErrorClass: 'popup__input_type_error',               //Класс поля ввода с ошибкой
+  errorClass: 'popup__error_visible'                       //Класс текста ошибки
+}; 
+
+enableValidation(validationConfig)
