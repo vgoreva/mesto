@@ -62,11 +62,13 @@ const initialCards = [
 //открыть любой попап
 function openPopup(popup) {
   popup.classList.add('popup_opened')
+  document.addEventListener('keydown', closePressingEsc);
 }
 
 //закрыть любой попап
 function closePopup(popup) {
   popup.classList.remove('popup_opened')
+  document.removeEventListener('keydown', closePressingEsc);
 };
 
 closeButtons.forEach((button) => {
@@ -104,12 +106,12 @@ function resetInput(form) {
 
 //Открыть окно добавления карточки
 function openAddForm() {
-  disableButton (saveButtonPopupAdd, {inactiveButtonClass:validationConfig.inactiveButtonClass});                    // Отключить кнопку при вызове окна
+  disableButton(saveButtonPopupAdd, { inactiveButtonClass: validationConfig.inactiveButtonClass });                    // Отключить кнопку при вызове окна
 
   errorMessageContainers.forEach(deleteErrorMessages);
 
-  undecorateInputs(cardNewImage,  {inputErrorClass:validationConfig.inputErrorClass}) 
-  undecorateInputs(cardNewTitle,  {inputErrorClass:validationConfig.inputErrorClass}) 
+  undecorateInputs(cardNewImage, { inputErrorClass: validationConfig.inputErrorClass })
+  undecorateInputs(cardNewTitle, { inputErrorClass: validationConfig.inputErrorClass })
 
   openPopup(popupAdd);
   resetInput(addForm);
@@ -172,7 +174,6 @@ function addAddedCards(card) {
   cardArea.prepend(card);
 }
 
-
 //Отразить новую карточку на страницу
 function renderAddedCard(event) {
   event.preventDefault();
@@ -188,42 +189,34 @@ function renderAddedCard(event) {
 
 addForm.addEventListener('submit', renderAddedCard);
 
-
 //Закрыть попап кликом на оверлэй
 function closeClickingOverlay(popup) {
-    popup.addEventListener('click', function(evt){
-      if (evt.target === evt.currentTarget){
-        closePopup(popup)
-      }
-    })
-  }
-
-//Закрыть попап с картинкой кликом на оверлэй
-closeClickingOverlay(popupImage)
-
-//Закрыть попап кнопкой esc
-function closePressingEsc (popup) {
-  document.addEventListener('keydown', function(evt){
-    if (evt.key === 'Escape'){
+  popup.addEventListener('click', function (evt) {
+    if (evt.target === evt.currentTarget) {
       closePopup(popup)
     }
   })
 }
 
+//Закрыть попап кнопкой esc
+function closePressingEsc(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened')
+    closePopup(openedPopup)
+  }
+}
+
 //Закрыть любой попап кликом вне попапа
 anyPopups.forEach(closeClickingOverlay)
 
-//Закрыть любой попфп esc
-anyPopups.forEach(closePressingEsc)
-
 //Валидация
-let validationConfig = {
+const validationConfig = {
   formSelector: '.popup__form',                                 //Селектор формы
   inputSelector: '.popup__input',                              //Селектор полей ввода
   submitButtonSelector: '.popup__save-button',                //Селектор кнопки
   inactiveButtonClass: 'popup__save-button_disabled',        //Класс неактивной кнопки
   inputErrorClass: 'popup__input_type_error',               //Класс поля ввода с ошибкой
   errorClass: 'popup__error_visible'                       //Класс текста ошибки
-}; 
+};
 
 enableValidation(validationConfig)
