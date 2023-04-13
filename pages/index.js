@@ -198,8 +198,22 @@ function closeClickingOverlay(popup) {
     })
   }
 
-//Закрыть попап с картинкой кликом на оверлэй
-closeClickingOverlay(popupImage)
+
+//Закрыть попап кнопкой esc
+function closePressingEsc (popup) {
+  document.addEventListener('keydown', function(evt){
+    if (evt.key === 'Escape'){
+      closePopup(popup)
+    }
+  })
+}
+
+//Закрыть любой попап кликом вне попапа
+anyPopups.forEach(closeClickingOverlay)
+
+//Закрыть любой попфп esc
+anyPopups.forEach(closePressingEsc)
+
 
 //Валидация
 let validationConfig = {
