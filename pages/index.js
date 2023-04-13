@@ -198,6 +198,8 @@ function closeClickingOverlay(popup) {
     })
   }
 
+//Закрыть попап с картинкой кликом на оверлэй
+closeClickingOverlay(popupImage)
 
 //Закрыть попап кнопкой esc
 function closePressingEsc (popup) {
@@ -213,7 +215,6 @@ anyPopups.forEach(closeClickingOverlay)
 
 //Закрыть любой попфп esc
 anyPopups.forEach(closePressingEsc)
-
 
 //Валидация
 let validationConfig = {
