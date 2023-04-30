@@ -1,7 +1,5 @@
 .popup__error {
     margin-top: 5px;
-}
+    height: 15px;
 
-.popup__error:nth-of-type(1) {
-    margin-bottom: 13px;
 }

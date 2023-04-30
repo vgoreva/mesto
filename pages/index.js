@@ -1,5 +1,5 @@
-import FormValidator from './FormValidator.js'
-import Card from './Card.js'
+import FormValidator from '../scripts/FormValidator.js'
+import Card from '../scripts/Card.js'
 
 // переменные из профиля
 const openButtonEditForm = document.querySelector('.profile__edit-button');
@@ -147,19 +147,6 @@ function openAddForm() {
 
 addButton.addEventListener('click', openAddForm);
 
-
-//   //Открыть попап с картинкой
-//   cardImage.addEventListener("click", function () {
-//     openPopup(popupImage);
-
-//     imageFull.setAttribute('src', card.link);
-//     cardImage.setAttribute('alt', card.name);
-//     titleFull.textContent = card.name;
-//   });
-
-//   return newCard;
-// };
-
 //Определить куда и как добавлять начальные карточки
 function addInitialCards(cardsToAdd) {
   cardArea.append(cardsToAdd);
@@ -167,8 +154,8 @@ function addInitialCards(cardsToAdd) {
 
 //Отразить на странице начальные карточки
 initialCards.forEach((item) => {
-  const newCard = new Card (item, '#cardTemplate').getCard();
-  addInitialCards (newCard)
+  const newCard = new Card(item, '#cardTemplate').getCard();
+  addInitialCards(newCard)
 })
 
 //Определить куда и как добавлять новые карточки
@@ -180,11 +167,11 @@ function addAddedCards(card) {
 function renderAddedCard(event) {
   event.preventDefault();
 
-  const newCard = new Card (
+  const newCard = new Card(
     {
-    name: cardNewTitle.value,
-    link: cardNewImage.value,
-  }, '#cardTemplate').getCard();;
+      name: cardNewTitle.value,
+      link: cardNewImage.value,
+    }, '#cardTemplate').getCard();;
 
   addAddedCards(newCard);
   closePopup(popupAdd);

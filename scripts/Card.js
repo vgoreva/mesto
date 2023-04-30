@@ -1,8 +1,7 @@
-import { popupImage } from './index.js'
-import { imageFull } from './index.js'
-import { titleFull } from './index.js'
-import { openPopup } from './index.js'
-
+import { popupImage } from '../pages/index.js'
+import { imageFull } from '../pages/index.js'
+import { titleFull } from '../pages/index.js'
+import { openPopup } from '../pages/index.js'
 
 class Card {
     constructor(data, templateSelector) {
@@ -19,22 +18,24 @@ class Card {
     _createCard() {
         this._card = this._getTemplate();
 
-        this._setEventListners(this._card);
-
         this._likeButton = this._card.querySelector('.element__like-button');
         this._deleteButton = this._card.querySelector('.element__trash-button');
         this._image = this._card.querySelector('.element__image');
+
+        this._setEventListners(this._card);
+
+
         this._card.querySelector('.element__title').textContent = this._name;
 
-        this._card.querySelector('.element__image').setAttribute('src', this._link);
-        this._card.querySelector('.element__image').setAttribute('alt', this._name);
+        this._image.setAttribute('src', this._link);
+        this._image.setAttribute('alt', this._name);
 
     }
 
     _setEventListners() {
-        this._card.querySelector('.element__like-button').addEventListener('click', () => { this._likeCard() });
-        this._card.querySelector('.element__trash-button').addEventListener('click', () => { this._deleteCard() });
-        this._card.querySelector('.element__image').addEventListener('click', () => { this._showCard() });
+        this._likeButton.addEventListener('click', () => { this._likeCard() });
+        this._deleteButton.addEventListener('click', () => { this._deleteCard() });
+        this._image.addEventListener('click', () => { this._showCard() });
 
     }
 
