@@ -1,7 +1,7 @@
-import { popupImage } from '../pages/index.js'
-import { imageFull } from '../pages/index.js'
-import { titleFull } from '../pages/index.js'
-import { openPopup } from '../pages/index.js'
+import { popupImage } from './index.js'
+import { imageFull } from './index.js'
+import { titleFull } from './index.js'
+import { openPopup } from './index.js'
 
 class Card {
     constructor(data, templateSelector) {
