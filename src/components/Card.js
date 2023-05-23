@@ -1,13 +1,11 @@
-import { popupImage } from './index.js'
-import { imageFull } from './index.js'
-import { titleFull } from './index.js'
-import { openPopup } from './index.js'
 
-class Card {
-    constructor(data, templateSelector) {
+export default class Card {
+    constructor(data, templateSelector, handleCardClick) {
+        this._data = data;
         this._name = data.name;
         this._link = data.link;
         this._templateSelector = templateSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -22,21 +20,17 @@ class Card {
         this._deleteButton = this._card.querySelector('.element__trash-button');
         this._image = this._card.querySelector('.element__image');
 
-        this._setEventListners(this._card);
-
-
         this._card.querySelector('.element__title').textContent = this._name;
-
         this._image.setAttribute('src', this._link);
         this._image.setAttribute('alt', this._name);
 
+        this._setEventListners(this._card);
     }
 
     _setEventListners() {
-        this._likeButton.addEventListener('click', () => { this._likeCard() });
-        this._deleteButton.addEventListener('click', () => { this._deleteCard() });
-        this._image.addEventListener('click', () => { this._showCard() });
-
+        this._likeButton.addEventListener('click', this._likeCard);
+        this._deleteButton.addEventListener('click', this._deleteCard);
+        this._image.addEventListener('click', this._showCard);
     }
 
     _likeCard = () => {
@@ -48,12 +42,7 @@ class Card {
     }
 
     _showCard = () => {
-
-        openPopup(popupImage);
-
-        imageFull.setAttribute('src', this._link);
-        imageFull.setAttribute('alt', this._name);
-        titleFull.textContent = this._name;
+        this._handleCardClick(this._data);
     };
 
     getCard() {
@@ -62,6 +51,4 @@ class Card {
     }
 
 }
-
-export default Card
 

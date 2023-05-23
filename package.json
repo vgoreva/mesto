@@ -1,0 +1,32 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf dist && webpack",
+    "dev": "webpack serve"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "babel-loader": "^9.1.2",
+    "css-loader": "^6.7.4",
+    "cssnano": "^6.0.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.1",
+    "mini-css-extract-plugin": "^2.7.6",
+    "postcss": "^8.4.23",
+    "postcss-loader": "^7.3.0",
+    "postcss-preset-env": "^8.4.1",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.83.1",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
+  },
+  "dependencies": {
+    "core-js": "^3.30.2"
+  }
+}
