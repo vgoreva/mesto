@@ -11,10 +11,10 @@ class FormValidator {
     enableValidation() {
         this._formInputs = Array.from(this._form.querySelectorAll(this._inputSelector)); // Массив из полей ввода
         this._formButton = this._form.querySelector(this._submitButtonSelector); // Кнопка
-        this._determineSaveButton()
+        this.__setEventListeners()
     }
 
-    _determineSaveButton() { //  Включить/выключить кнопку
+    __setEventListeners() { 
         this._formInputs.forEach(input => {                      // Перебать каждого поля ввода из массива
             input.addEventListener('input', () => {           // Установить ответ на каждый ввод в вводе полей из массива
                 this._checkInputValidity(input)                         // При вводе для каждого поля ввода проверить ошибку и продемонстрировать ее

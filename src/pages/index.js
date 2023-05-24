@@ -26,27 +26,13 @@ const userDetailsElement = document.querySelector('.profile__details');
 const addForm = document.querySelector('.popup__form_type_add');
 const editForm = document.querySelector('.popup__form_type_edit');
 
-//Переменные из всплывающего окна редактирования профиля
-//const popupEdit = document.querySelector('.popup_type_edit');
 const userNameEditForm = document.querySelector('.popup__input_type_name');
-const userDetailsEditForm = document.querySelector('.popup__input_type_details');
+const userDetailsEditForm = document.querySelector('.popup__input_type_link');
 
-//Переменные из всплывающего окна добавления фото
-//const popupAdd = document.querySelector('.popup_type_add');
 const cardNewImage = document.querySelector('.popup__input_type_link');
 const cardNewTitle = document.querySelector('.popup__input_type_title');
-// const saveButtonPopupAdd = document.querySelector('.popup__save-button_type_add')
 const errorMessageContainers = document.querySelectorAll('.popup__error')
 
-//Переменные из попапа с картинкой
-// const popupImage = document.querySelector('.popup_type_view');
-// const popupContainerImage = document.querySelector('.popup__container_image');
-// const imageFull = document.querySelector('.popup__image')
-// const titleFull = document.querySelector('.popup__title_full')
-// const closeButtonImage = document.querySelector('.popup__close-button_type_image');
-
-//Данные начальных карточек
-//const cardArea = document.querySelector('.location__elements');
 const initialCards = [
   {
     name: 'Новая Аквитания',
@@ -74,7 +60,6 @@ const initialCards = [
   }
 ];
 
-//Валидация
 const validationConfig = {
   inputSelector: '.popup__input',                              //Селектор полей ввода
   submitButtonSelector: '.popup__save-button',                //Селектор кнопки
@@ -83,39 +68,54 @@ const validationConfig = {
   errorClass: 'popup__error_visible'                       //Класс текста ошибки
 };
 
+//Создать из класа провила валидации форм редактирования профиля и добавления карточки, установить слушатели
 const addFormInstance = new FormValidator(addForm, validationConfig);
 const editFormInstance = new FormValidator(editForm, validationConfig);
-
 editFormInstance.enableValidation()
 addFormInstance.enableValidation()
 
-//Данные профиля
+//Создать из класса правила о данных пользователя
 const userInfo = new UserInfo({ nameSelector: '.profile__name', detailsSelector: '.profile__details' });
 
-//Попапы
-const profilePopup = new PopupWithForm('.popup_type_edit', (event) => {
-  event.preventDefault();
-
-  userInfo.setUserInfo(profilePopup.getInputValues());
-
-  profilePopup.close();
+//Создать из класса попап редактирования профился и установить слушатели
+const profilePopup = new PopupWithForm('.popup_type_edit', inputValues => {
+  userInfo.setUserInfo(inputValues);
 });
-
 profilePopup.setEventListeners();
 
-//Сабмит новой карточки
-const addPopup = new PopupWithForm('.popup_type_add', (event) => {
-  event.preventDefault();
+//Создать из класса попап с картинкой и установить слушатели
+const fullImagePopup = new PopupWithImage('.popup_type_view');
+fullImagePopup.setEventListeners();
 
-  renderAddedCard();
+//Отразить на странице начальные карточки
+const cardSection = new Section({
+  data: initialCards,
+  renderer: (item) => {
+    const card = new Card(item, '#cardTemplate', fullImagePopup.open);
+    return card.getCard();
+  }
+}, '.location__elements');
+
+cardSection.renderItems()
+
+//Открыть окно добавления карточки
+function openAddPopup() {
+  addPopup.open();
+
+  addFormInstance.disableButton();
+  errorMessageContainers.forEach(editFormInstance.deleteErrorMessages);
+  editFormInstance.undecorateInput(cardNewImage);
+  editFormInstance.undecorateInput(cardNewTitle);
+};
+
+addButton.addEventListener('click', openAddPopup);
+
+//Сабмит новой карточки
+const addPopup = new PopupWithForm('.popup_type_add', inputValues =>{
+    cardSection.addItem(cardSection.renderer(inputValues));
 })
 
 addPopup.setEventListeners();
-
-//Создать из класса попап с картинкой
-const fullImagePopup = new PopupWithImage('.popup_type_view');
-
-fullImagePopup.setEventListeners();
 
 //Открыть окно редактирование профиля с данными
 function openEditPopup() {
@@ -131,44 +131,3 @@ function openEditPopup() {
 };
 
 openButtonEditForm.addEventListener('click', openEditPopup);
-
-//Открыть окно добавления карточки
-function openAddPopup() {
-  addPopup.open();
-
-  addFormInstance.disableButton();
-  errorMessageContainers.forEach(editFormInstance.deleteErrorMessages);
-  editFormInstance.undecorateInput(cardNewImage);
-  editFormInstance.undecorateInput(cardNewTitle);
-};
-
-addButton.addEventListener('click', openAddPopup);
-
-//Отразить на странице начальные карточки
-const initialCardList = new Section({
-  data: initialCards,
-  renderer: (item) => {
-    const card = new Card(item, '#cardTemplate', fullImagePopup.open);
-    return card.getCard();
-  }
-}, '.location__elements');
-
-initialCardList.renderItems()
-
-//Отразить новую карточку на страницу
-function renderAddedCard(event) {
-  const addedCardList = new Section({
-    data: {
-      name: cardNewTitle.value,
-      link: cardNewImage.value,
-    },
-    renderer: (item) => {
-      const newCard = new Card(item, '#cardTemplate', fullImagePopup.open);
-      return newCard.getCard();
-    }
-  }, '.location__elements');
-
-  addedCardList.renderItem()
-
-  addPopup.close();
-}

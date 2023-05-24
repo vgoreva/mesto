@@ -17,9 +17,9 @@
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <p class="profile__details">Исследователь океана</p>
-                <button class="profile__edit-button" type="button" aria-label="edit"></button>
+                <button class="profile__edit-button" type="button" aria-label="Изменить"></button>
             </div>
-            <button class="profile__add-button" type="button" aria-label="add"></button>
+            <button class="profile__add-button" type="button" aria-label="Добавить"></button>
         </section>
         <section class="location">
             <ul class="location__elements">
@@ -27,8 +27,8 @@
                     <li class="element">
                         <img class="element__image">
                         <h2 class="element__title"></h2>
-                        <button class="element__trash-button" type="button" aria-label="trash" id="trash"></button>
-                        <button class="element__like-button" type="button" aria-label="like" id="like"></button>
+                        <button class="element__trash-button" type="button" aria-label="Удалить" id="trash"></button>
+                        <button class="element__like-button" type="button" aria-label="Нравится" id="like"></button>
                     </li>
                 </template>
             </ul>
@@ -39,27 +39,27 @@
     </footer>
     <div class="popup popup_type_edit">
         <div class="popup__container">
-            <button class="popup__close-button popup__close-button_type_edit" type="button" aria-label="close"></button>
+            <button class="popup__close-button popup__close-button_type_edit" type="button" aria-label="Закрыть"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form class="popup__form  popup__form_type_edit" name="popup__form" novalidate>
                 <input class="popup__input popup__input_type_name" type="text" minlength="2" maxlength="40" name="name" id="name" required>
                 <span id="name-error" class="popup__error"></span>
-                <input class="popup__input popup__input_type_details" type="text" minlength="2" maxlength="200" name="details" id="details" required>
-                <span id="details-error" class="popup__error"></span>
+                <input class="popup__input popup__input_type_link" type="text" minlength="2" maxlength="200" name="link" id="link" required>
+                <span id="link-error" class="popup__error"></span>
                 <button class="popup__save-button" type="submit">Cохранить</button>
             </form>
         </div>
     </div>
     <div class="popup popup_type_add">
         <div class="popup__container">
-            <button class="popup__close-button popup__close-button_type_add" type="button" aria-label="close"></button>
+            <button class="popup__close-button popup__close-button_type_add" type="button" aria-label="Закрыть"></button>
             <h2 class="popup__title">Новое место</h2>
             <form class="popup__form popup__form_type_add" name="popup__form" novalidate>
-                <input class="popup__input popup__input_type_title" type="text" minlength="2" maxlength="30" name="popup__title" id="title"
+                <input class="popup__input popup__input_type_title" type="text" minlength="2" maxlength="30" name="name" id="name"
                     placeholder="Название" required>
-                <span class="popup__error"  id="title-error"></span>
-                <input class="popup__input popup__input_type_link" type="url" name="popup__link" id="link"
-                    placeholder="Сылка на картинку" required>
+                <span class="popup__error"  id="name-error"></span>
+                <input class="popup__input popup__input_type_link" type="url" name="link" id="link"
+                    placeholder="Сcылка на картинку" required>
                 <span id="link-error" class="popup__error"></span>
                 <button class="popup__save-button popup__save-button_type_add" type="submit">Cохранить</button>
             </form>
@@ -68,7 +68,7 @@
     <div class="popup popup_type_view">
         <div class="popup__container popup__container_image">
             <button class="popup__close-button popup__close-button_type_image" type="button"
-                aria-label="close"></button>
+                aria-label="Закрыть"></button>
                 <div class="popup__template">
                     <img class="popup__image">
                     <h2 class="popup__title popup__title_full"></h2>

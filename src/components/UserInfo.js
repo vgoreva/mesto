@@ -13,6 +13,6 @@ export default class UserInfo {
 
     setUserInfo(data) { // Внести новые данные
         this._name.textContent = data.name;
-        this._details.textContent = data.details;
+        this._details.textContent = data.link;
     }
 }
