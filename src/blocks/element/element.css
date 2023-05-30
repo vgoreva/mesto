@@ -3,10 +3,12 @@
     padding: 0;
     width: 100%;
     display: grid;
-    grid-template-rows: 282px 1fr;
+    grid-template-rows: 282px 48px 31px;
+    grid-template-columns: 214px 68px;
     grid-template-areas:
         "image image"
-        "title like";
+        "title like"
+        ". counter";
     background-color: #fff;
     border-radius: 10px;
     align-content: space-between;

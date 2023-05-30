@@ -2,4 +2,5 @@
     display: flex;
     opacity: 1;
     height: auto;
+    pointer-events: auto;
 }

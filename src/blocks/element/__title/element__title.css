@@ -1,10 +1,10 @@
 .element__title {
-    margin: 25px 21px 31px;
+    margin: 25px 21px;
     padding: 0;
     display: block;
     width: 200px;
     grid-area: title;
-    align-self: center;
+    align-self: start;
     font-size: 24px;
     line-height: 29px;
     color: #000000;
