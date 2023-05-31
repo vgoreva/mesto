@@ -17,8 +17,4 @@ export default class Section {
             this.renderer(item);
         });
     }
-
-    renderItem() {
-        this.addItem(this._renderer(this._renderedItems))
-    }
 }

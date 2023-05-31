@@ -57,7 +57,7 @@ export default class Card {
     }
 
     _clickOnTrash = () => {
-        this._handleDeleteClick({card: this, cardId: this._data._id})
+        this._handleDeleteClick({item: this, id: this._data._id})
     }
 
     _hideDeleteButton() {

@@ -13,7 +13,7 @@ export default class PopupDelete extends Popup {
 
         this._form.addEventListener('submit', evt => {
             evt.preventDefault();
-            this._submitCallBack({ card: this._item, cardId: this._cardId });
+            this._submitCallBack({ item: this._item, id: this._itemId });
             this._submitButton.textContent = `${this._submitButton.textContent}...`
         });
     }
@@ -22,11 +22,10 @@ export default class PopupDelete extends Popup {
         this._submitButton.textContent = this._defaulButtonText;
     }
 
-    open = ({ card, cardId }) => {
+    open = ({ item, id }) => {
         super.open();
 
-        this._item = card;
-        this._cardId = cardId;
-        console.log(cardId)
+        this._item = item;
+        this._itemId = id;
     }
 }

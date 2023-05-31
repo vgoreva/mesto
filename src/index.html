@@ -45,12 +45,12 @@
         <div class="popup__container">
             <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form  popup__form_type_edit" name="popup__form" novalidate>
+            <form class="popup__form  popup__form_type_edit" name="form_type_edit" novalidate>
                 <input class="popup__input popup__input_type_name" type="text" minlength="2" maxlength="40" name="name"
-                    id="name" required>
+                    id="name"  placeholder="Ваше имя" required>
                 <span id="name-error" class="popup__error"></span>
                 <input class="popup__input popup__input_type_link" type="text" minlength="2" maxlength="200" name="details"
-                    id="details" required>
+                    id="details" placeholder="О себе" required>
                 <span id="details-error" class="popup__error"></span>
                 <button class="popup__save-button" type="submit">Cохранить</button>
             </form>
@@ -60,7 +60,7 @@
         <div class="popup__container">
             <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
             <h2 class="popup__title">Новое место</h2>
-            <form class="popup__form popup__form_type_add" name="popup__form" novalidate>
+            <form class="popup__form popup__form_type_add" name="form_type_add" novalidate>
                 <input class="popup__input popup__input_type_title" type="text" minlength="2" maxlength="30" name="title"
                     id="title" placeholder="Название" required>
                 <span class="popup__error" id="title-error"></span>
@@ -84,7 +84,7 @@
         <div class="popup__container popup__container_type_delete">
             <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
             <h2 class="popup__title popup__title_type_delete">Вы уверены?</h2>
-            <form class="popup__form  popup__form_type_delete" name="popup__form" novalidate>
+            <form class="popup__form  popup__form_type_delete" name="form_type_delete" novalidate>
                 <button class="popup__save-button popup__save-button_type_delete" type="submit">Да</button>
             </form>
         </div>
@@ -93,7 +93,7 @@
         <div class="popup__container popup__container_type_avatar">
             <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
             <h2 class="popup__title popup__title_type_avatar">Обновить аватар</h2>
-            <form class="popup__form  popup__form_type_avatar" name="popup__form" novalidate>
+            <form class="popup__form  popup__form_type_avatar" name="form_type_avatar" novalidate>
                 <input class="popup__input popup__input_type_avatar" type="url" name="avatar" id="avatar"
                     placeholder="Сcылка на картинку" required>
                 <span id="avatar-error" class="popup__error"></span>
