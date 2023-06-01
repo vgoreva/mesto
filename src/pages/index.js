@@ -62,7 +62,7 @@ const userInfo = new UserInfo({ nameSelector: '.profile__name', detailsSelector:
 const popupProfile = new PopupWithForm('.popup_type_edit', (data) => {
   api.setUserInfo(data)
     .then(res => {
-      userInfo.setUserInfo({ username: res.name, details: res.about, avatar: res.avatar })
+      userInfo.setUserInfo({ name: res.name, details: res.about, avatar: res.avatar })
       popupProfile.close()
     })
     .catch(error => console.log(`Ошибка: ${error}`))
@@ -74,12 +74,12 @@ popupProfile.setEventListeners();
 function openEditPopup() {
   popupProfile.open();
 
+  popupProfile.setInputValues(userInfo.getUserInfo());
+
   editFormInstance.disableButton();
   errorMessageContainers.forEach(editFormInstance.deleteErrorMessages);
   editFormInstance.undecorateInput(userNameInput);
   editFormInstance.undecorateInput(userDetailsInput);
-
-  userInfo.getUserInfo(userNameInput, userDetailsInput)
 };
 popupProfileOpenButton.addEventListener('click', openEditPopup);
 
@@ -87,7 +87,7 @@ popupProfileOpenButton.addEventListener('click', openEditPopup);
 const popupAvatar = new PopupWithForm('.popup_type_avatar', (data) => {
   api.setUserAvatar(data)
     .then(res => {
-      userInfo.setUserInfo({ username: res.name, details: res.about, avatar: res.avatar })
+      userInfo.setUserInfo({ name: res.name, details: res.about, avatar: res.avatar })
       popupAvatar.close()
     })
     .catch(error => console.log(`Ошибка: ${error}`))
@@ -174,7 +174,7 @@ popupAdd.setEventListeners();
 Promise.all([api.getUserInfo(), api.getCards()])
   .then(([dataUser, dataCard]) => {
     dataCard.forEach((element) => element.myid = dataUser._id)
-    userInfo.setUserInfo({ username: dataUser.name, details: dataUser.about, avatar: dataUser.avatar })
+    userInfo.setUserInfo({ name: dataUser.name, details: dataUser.about, avatar: dataUser.avatar })
     userInfo.setid(dataUser._id)
     cardsContainer.renderItems(dataCard)
   })
